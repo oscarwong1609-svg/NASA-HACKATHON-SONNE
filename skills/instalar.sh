@@ -9,6 +9,7 @@ mkdir -p "$destino"
 n=0
 for carpeta in "$origen"/*/; do
   nombre="$(basename "$carpeta")"
+  [ -f "$carpeta/SKILL.md" ] || continue
   mkdir -p "$destino/$nombre"
   cp -R "$carpeta". "$destino/$nombre/"
   echo "Instalada: $nombre"

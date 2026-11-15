@@ -1,0 +1,44 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "equipo-mission-lab",
+  "description": "Plugins de Claude Code que usa el equipo de Mission Lab (NASA Space Apps 2026). Copias de las versiones originales, sin cambios.",
+  "owner": {
+    "name": "Equipo Mission Lab"
+  },
+  "plugins": [
+    {
+      "name": "superpowers",
+      "source": "./plugins/superpowers",
+      "description": "Flujo de trabajo: lluvia de ideas, planes, pruebas primero y depuración sistemática.",
+      "version": "7.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/obra/superpowers",
+      "category": "development"
+    },
+    {
+      "name": "frontend-design",
+      "source": "./plugins/frontend-design",
+      "description": "Diseño de interfaces con personalidad, sin aspecto genérico.",
+      "version": "1.1.1",
+      "license": "Apache-2.0",
+      "category": "development"
+    },
+    {
+      "name": "code-review",
+      "source": "./plugins/code-review",
+      "description": "Revisión de código de un cambio o de un pull request.",
+      "version": "1.0.1",
+      "license": "Apache-2.0",
+      "category": "productivity"
+    },
+    {
+      "name": "humanizer",
+      "source": "./plugins/humanizer",
+      "description": "Reescribe textos para que no suenen a IA.",
+      "version": "3.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/blader/humanizer",
+      "category": "productivity"
+    }
+  ]
+}

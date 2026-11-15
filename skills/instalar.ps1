@@ -6,7 +6,7 @@ $destino = Join-Path $HOME '.claude\skills'
 New-Item -ItemType Directory -Force -Path $destino | Out-Null
 
 $n = 0
-Get-ChildItem -Path $origen -Directory | ForEach-Object {
+Get-ChildItem -Path $origen -Directory | Where-Object { Test-Path (Join-Path $_.FullName 'SKILL.md') } | ForEach-Object {
     $objetivo = Join-Path $destino $_.Name
     New-Item -ItemType Directory -Force -Path $objetivo | Out-Null
     Copy-Item -Path (Join-Path $_.FullName '*') -Destination $objetivo -Recurse -Force

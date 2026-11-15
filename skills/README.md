@@ -1,6 +1,9 @@
-# Skills del equipo para Claude Code
+# Skills y plugins del equipo para Claude Code
 
-Esta carpeta tiene **26 skills** para Claude Code y la lista de **4 plugins** que usamos en el equipo. Una skill es un conjunto de instrucciones que Claude carga cuando la tarea lo necesita: por ejemplo, cómo hacer pruebas, cómo revisar código o cómo planificar.
+Esta carpeta tiene **26 skills** y **4 plugins** para Claude Code.
+
+- Una **skill** es un conjunto de instrucciones que Claude carga cuando la tarea lo necesita: por ejemplo, cómo hacer pruebas, cómo revisar código o cómo planificar.
+- Un **plugin** es un paquete más grande: puede traer varias skills, comandos y automatismos. Aquí van dentro de `plugins/`, junto con un catálogo del equipo (`equipo-mission-lab`) para instalarlos desde el repositorio.
 
 ## Forma más fácil: pedírselo a Claude
 
@@ -9,14 +12,19 @@ Esta carpeta tiene **26 skills** para Claude Code y la lista de **4 plugins** qu
 3. Copia y pega este mensaje:
 
 ```text
-Instala las skills de la carpeta skills/ de este repositorio: copia cada subcarpeta a mi carpeta personal de skills (~/.claude/skills/, en Windows C:\Users\<mi usuario>\.claude\skills\), sin borrar las skills que ya tengo. Después instala los plugins que aparecen en skills/README.md y dime cuáles quedaron instalados.
+Instala lo que hay en la carpeta skills/ de este repositorio siguiendo skills/README.md:
+1) Copia cada subcarpeta de skills/ que tenga un SKILL.md a mi carpeta personal de skills (~/.claude/skills/, en Windows C:\Users\<mi usuario>\.claude\skills\), sin borrar las skills que ya tengo.
+2) Añade el catálogo de plugins del equipo con "claude plugin marketplace add" usando la ruta completa de la carpeta skills/ de este repositorio, e instala desde él superpowers, frontend-design, code-review y humanizer (equipo-mission-lab). Si ya tengo alguno de esos plugins instalado desde otro catálogo, no lo instales otra vez y avísame.
+Al terminar, dime qué skills y qué plugins quedaron instalados.
 ```
 
-4. Cierra y vuelve a abrir Claude Code para que cargue las skills nuevas.
+4. Cierra y vuelve a abrir Claude Code para que cargue todo.
 
 ## Con comandos
 
-Ejecútalos desde la carpeta raíz del repositorio.
+Todos se ejecutan desde la **carpeta raíz del repositorio**, en una terminal.
+
+### 1. Skills
 
 **Windows (PowerShell):**
 
@@ -30,34 +38,53 @@ powershell -ExecutionPolicy Bypass -File skills\instalar.ps1
 bash skills/instalar.sh
 ```
 
-Los dos scripts copian cada skill a `~/.claude/skills/`. Si ya tienes una skill con el mismo nombre, se actualiza con esta versión. Las demás skills que tengas no se tocan.
+Los scripts copian cada skill a `~/.claude/skills/`. Si ya tienes una skill con el mismo nombre, se actualiza con esta versión. Las demás skills que tengas no se tocan.
 
-## Plugins
+### 2. Plugins
 
-Los plugins no se copian como archivos: se instalan desde su catálogo (marketplace). En Claude Code, escribe estos comandos uno por uno:
-
-```text
-/plugin install superpowers@claude-plugins-official
-/plugin install frontend-design@claude-plugins-official
-/plugin install code-review@claude-plugins-official
-/plugin marketplace add blader/humanizer
-/plugin install humanizer@humanizer
+```bash
+claude plugin marketplace add ./skills
+claude plugin install superpowers@equipo-mission-lab
+claude plugin install frontend-design@equipo-mission-lab
+claude plugin install code-review@equipo-mission-lab
+claude plugin install humanizer@equipo-mission-lab
 ```
 
-Si Claude dice que no encuentra `claude-plugins-official`, añádelo primero:
+También se puede hacer dentro del chat de Claude Code con `/plugin marketplace add ./skills` y `/plugin install superpowers@equipo-mission-lab` (y así con cada uno).
 
-```text
-/plugin marketplace add anthropics/claude-plugins-official
+Si ya tienes alguno de estos plugins instalado desde su catálogo original, no hace falta instalarlo otra vez.
+
+> **Importante:** los plugins se leen desde la carpeta del repositorio. **No muevas ni borres la carpeta del repositorio** después de instalarlos. Si la mueves, vuelve a ejecutar `claude plugin marketplace add` con la ruta nueva.
+
+### 3. Comprobar que funcionó
+
+```bash
+claude plugin list
 ```
 
-En la app de escritorio de Claude también puedes instalarlos desde la sección de plugins.
+Y en Claude Code pregunta: **"¿Qué skills tienes disponibles?"**.
 
-| Plugin | Para qué sirve |
-|---|---|
-| `superpowers` | Flujo de trabajo: lluvia de ideas, planes, pruebas primero, depuración sistemática |
-| `frontend-design` | Diseño de interfaces con personalidad, sin aspecto genérico |
-| `code-review` | Revisión de código de un cambio o de un pull request |
-| `humanizer` | Reescribe textos para que no suenen a IA |
+## Actualizar
+
+Cuando alguien suba versiones nuevas al repositorio:
+
+```bash
+git pull
+claude plugin marketplace update equipo-mission-lab
+```
+
+Para las skills, vuelve a ejecutar el script de instalación.
+
+## Qué plugins hay
+
+| Plugin | Versión | Para qué sirve | Autor y licencia |
+|---|---|---|---|
+| `superpowers` | 7.0.2 | Flujo de trabajo: lluvia de ideas, planes, pruebas primero, depuración sistemática | Jesse Vincent · MIT |
+| `frontend-design` | 1.1.1 | Diseño de interfaces con personalidad, sin aspecto genérico | Anthropic · Apache 2.0 |
+| `code-review` | 1.0.1 | Revisión de código de un cambio o de un pull request | Anthropic · Apache 2.0 |
+| `humanizer` | 3.1.0 | Reescribe textos para que no suenen a IA | blader (Siqi Chen) · MIT |
+
+Son copias sin cambios de las versiones originales, cada una con su archivo `LICENSE`. También se pueden instalar desde sus catálogos originales (`claude-plugins-official` y `blader/humanizer`), que se actualizan solos.
 
 ## Qué skills hay
 
@@ -99,7 +126,3 @@ pip install graphifyy
 ```
 
 Después se usa escribiendo `/graphify` en Claude Code.
-
-## Comprobar que funcionó
-
-Abre Claude Code y pregúntale: **"¿Qué skills tienes disponibles?"**. Deberían aparecer las de la tabla.
