@@ -1,3 +1,0 @@
-# Los plugins se guardan exactamente como vienen de sus autores (sin convertir finales de línea),
-# para que sus scripts funcionen igual en Windows, Mac y Linux.
-* -text
