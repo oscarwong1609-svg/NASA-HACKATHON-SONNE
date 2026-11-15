@@ -1,9 +1,0 @@
-build/
-.gradle/
-out/
-bin/
-.idea/
-*.iml
-.vscode/
-.DS_Store
-local.properties

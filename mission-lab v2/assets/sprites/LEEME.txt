@@ -1,3 +1,0 @@
-Sprites pixel art. Un PNG por pieza con el id de Catalog.java (ej. cam_sharp.png), 12 x 12 px.
-Personajes: player_0.png ... player_3.png, 8 x 10 px.
-Usar solo los colores de game/Palette.java.
