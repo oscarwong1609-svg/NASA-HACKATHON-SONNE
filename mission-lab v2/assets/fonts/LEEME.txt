@@ -1,0 +1,1 @@
+Opcional: pixel.fnt (formato BMFont) y su .png. Si no existe se usa la fuente por defecto.

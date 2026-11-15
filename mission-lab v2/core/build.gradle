@@ -1,0 +1,22 @@
+apply plugin: 'java-library'
+
+dependencies {
+    api "com.badlogicgames.gdx:gdx:$gdxVersion"
+
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging { events 'failed'; exceptionFormat 'full' }
+}
+
+// ./gradlew :core:balance  ->  prueba todos los diseños y muestra los mejores
+tasks.register('balance', JavaExec) {
+    group = 'verification'
+    description = 'Scores every possible design for each commission.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.missionlab.sim.Balance'
+}

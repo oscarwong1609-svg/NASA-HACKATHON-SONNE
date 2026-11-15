@@ -1,0 +1,2 @@
+Sonidos opcionales (.wav, .ogg o .mp3):
+pickup, place, click, deny, alert, launch, success, fail
