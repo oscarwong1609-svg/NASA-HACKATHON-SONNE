@@ -1,0 +1,4 @@
+Fotos reales de NASA para el final de la partida.
+Nombres: greenland.png, amazon_fire.png, off_target.png (oceano).
+Cuadradas, unos 512 x 512 px. Poner el credito en Catalog.java (photoCredit).
+Mientras no existan, el juego dibuja imagenes provisionales.

@@ -1,0 +1,4 @@
+Opcional. El juego ya trae su pixel art (game/SpriteData.java, generado con tools/art.py).
+Un PNG aquí sustituye al dibujo incluido: uno por pieza con el id de Catalog.java (ej. cam_sharp.png), 12 x 12 px.
+Astronautas: player_0.png ... player_3.png.
+Usar solo los colores de game/Palette.java.

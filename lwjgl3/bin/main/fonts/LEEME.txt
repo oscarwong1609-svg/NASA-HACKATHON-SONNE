@@ -1,0 +1,1 @@
+Las fuentes van dentro del código (game/FontData.java, generado con tools/fontgen.py). Esta carpeta ya no se usa.
