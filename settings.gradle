@@ -1,2 +1,0 @@
-rootProject.name = 'mission-lab'
-include 'core', 'lwjgl3'
